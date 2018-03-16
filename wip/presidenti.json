@@ -1,0 +1,93 @@
+[
+  {
+    "nome": "Enrico de Nicola",
+    "turni": 1,
+    "partito": "Partito Liberale Italiano",
+    "provincia": "Napoli",
+    "regione": "Campania"
+  },
+  {
+    "nome": "Luigi Einaudi",
+    "turni": 4,
+    "partito": "Partito Liberale Italiano",
+    "provincia": "Cuneo",
+    "regione": "Piemonte"
+  },
+  {
+    "nome": "Giovanni Gronchi",
+    "turni": 4,
+    "partito": "Democrazia Cristiana",
+    "provincia": "Pisa",
+    "regione": "Toscana"
+  },
+  {
+    "nome": "Antonio Segni",
+    "turni": 9,
+    "partito": "Democrazia Cristiana",
+    "provincia": "Sassari",
+    "regione": "Sardegna"
+  },
+  {
+    "nome": "Giuseppe Saragat",
+    "turni": 21,
+    "partito": "Partito Socialista Democratico Italiano",
+    "provincia": "Torino",
+    "regione": "Piemonte"
+  },
+  {
+    "nome": "Giovanni Leone",
+    "turni": 23,
+    "partito": "Democrazia Cristiana",
+    "provincia": "Napoli",
+    "regione": "Campania"
+  },
+  {
+    "nome": "Alessandro Pertini",
+    "turni": 16,
+    "partito": "Partito Socialista Italiano",
+    "provincia": "Savona",
+    "regione": "Liguria"
+  },
+  {
+    "nome": "Francesco Cossiga",
+    "turni": 1,
+    "partito": "Democrazia Cristiana",
+    "provincia": "Sassari",
+    "regione": "Sardegna"
+  },
+  {
+    "nome": "Oscar Luigi Scalfaro",
+    "turni": 16,
+    "partito": "Democrazia Cristiana",
+    "provincia": "Novara",
+    "regione": "Piemonte"
+  },
+  {
+    "nome": "Carlo Azeglio Ciampi",
+    "turni": 1,
+    "partito": "Indipendente",
+    "provincia": "Livorno",
+    "regione": "Toscana"
+  },
+  {
+    "nome": "Giorgio Napolitano",
+    "turni": 4,
+    "partito": "Democratici di Sinistra",
+    "provincia": "Napoli",
+    "regione": "Campania"
+  },
+  {
+    "nome": "Giorgio Napolitano",
+    "turni": 6,
+    "partito": "Indipendente",
+    "provincia": "Napoli",
+    "regione": "Campania"
+  },
+  {
+    "nome": "Sergio Mattarella",
+    "turni": 4,
+    "partito": "Indipendente",
+    "provincia": "Palermo",
+    "regione": "Sicilia"
+  }
+]

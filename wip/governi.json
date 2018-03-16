@@ -1,0 +1,226 @@
+[
+  {
+    "giorni": 3339,
+    "nome": "Silvio Berlusconi",
+    "partito": "Forza Italia",
+    "governi": 4,
+    "provincia": "Milano",
+    "regione": "Lombardia"
+  },
+  {
+    "giorni": 2677,
+    "nome": "Giulio Andreotti",
+    "partito": "Democrazia Cristiana",
+    "governi": 7,
+    "provincia": "Roma",
+    "regione": "Lazio"
+  },
+  {
+    "giorni": 2591,
+    "nome": "Alcide De Gasperi",
+    "partito": "Democrazia Cristiana",
+    "governi": 7,
+    "provincia": "Trento",
+    "regione": "Trentino Alto Adige"
+  },
+  {
+    "giorni": 2277,
+    "nome": "Aldo Moro",
+    "partito": "Democrazia Cristiana",
+    "governi": 5,
+    "provincia": "Lecce",
+    "regione": "Puglia"
+  },
+  {
+    "giorni": 1657,
+    "nome": "Amintore Fanfani",
+    "partito": "Democrazia Cristiana",
+    "governi": 6,
+    "provincia": "Arezzo",
+    "regione": "Toscana"
+  },
+  {
+    "giorni": 1608,
+    "nome": "Romano Prodi",
+    "partito": "L'Ulivo / Partito Democratico",
+    "governi": 2,
+    "provincia": "Reggio Emilia",
+    "regione": "Emilia Romagna"
+  },
+  {
+    "giorni": 1353,
+    "nome": "Bettino Craxi",
+    "partito": "Partito Socialista Italiano",
+    "governi": 2,
+    "provincia": "Milano",
+    "regione": "Lombardia"
+  },
+  {
+    "giorni": 1103,
+    "nome": "Mariano Rumor",
+    "partito": "Democrazia Cristiana",
+    "governi": 5,
+    "provincia": "Vicenza",
+    "regione": "Veneto"
+  },
+  {
+    "giorni": 1088,
+    "nome": "Antonio Segni",
+    "partito": "Democrazia Cristiana",
+    "governi": 2,
+    "provincia": "Sassari",
+    "regione": "Sardegna"
+  },
+  {
+    "giorni": 1024,
+    "nome": "Matteo Renzi",
+    "partito": "Partito Democratico",
+    "governi": 1,
+    "provincia": "Firenze",
+    "regione": "Toscana"
+  },
+  {
+    "giorni": 716,
+    "nome": "Giuliano Amato",
+    "partito": "Partito Socialista Italiano / L'Ulivo",
+    "governi": 2,
+    "provincia": "Torino",
+    "regione": "Piemonte"
+  },
+  {
+    "giorni": 561,
+    "nome": "Emilio Colombo",
+    "partito": "Democrazia Cristiana",
+    "governi": 1,
+    "provincia": "Potenza",
+    "regione": "Basilicata"
+  },
+  {
+    "giorni": 553,
+    "nome": "Massimo D'Alema",
+    "partito": "Democratici di Sinistra",
+    "governi": 2,
+    "provincia": "Roma",
+    "regione": "Lazio"
+  },
+  {
+    "giorni": 528,
+    "nome": "Mario Monti",
+    "partito": "Indipendente / Rinnovamento Italiano",
+    "governi": 1,
+    "provincia": "Varese",
+    "regione": "Lombardia"
+  },
+  {
+    "giorni": 521,
+    "nome": "Giovanni Spadolini",
+    "partito": "Partito Repubblicano Italiano",
+    "governi": 2,
+    "provincia": "Firenze",
+    "regione": "Toscana"
+  },
+  {
+    "giorni": 511,
+    "nome": "Mario Scelba",
+    "partito": "Democrazia Cristiana",
+    "governi": 1,
+    "provincia": "Catania",
+    "regione": "Sicilia"
+  },
+  {
+    "giorni": 486,
+    "nome": "Lamberto Dini",
+    "partito": "Indipendente / Rinnovamento Italiano",
+    "governi": 1,
+    "provincia": "Firenze",
+    "regione": "Toscana"
+  },
+  {
+    "giorni": 466,
+    "nome": "Ciriaco De Mita",
+    "partito": "Democrazia Cristiana",
+    "governi": 1,
+    "provincia": "Avellino",
+    "regione": "Campania"
+  },
+  {
+    "giorni": 457,
+    "nome": "Paolo Gentiloni",
+    "partito": "Partito Democratico",
+    "governi": 1,
+    "provincia": "Roma",
+    "regione": "Lazio"
+  },
+  {
+    "giorni": 440,
+    "nome": "Francesco Cossiga",
+    "partito": "Democrazia Cristiana",
+    "governi": 2,
+    "provincia": "Sassari",
+    "regione": "Sardegna"
+  },
+  {
+    "giorni": 408,
+    "nome": "Adone Zoli",
+    "partito": "Democrazia Cristiana",
+    "governi": 1,
+    "provincia": "Forlì-Cesena",
+    "regione": "Emilia Romagna"
+  },
+  {
+    "giorni": 377,
+    "nome": "Carlo Azeglio Ciampi",
+    "partito": "Indipendente",
+    "governi": 1,
+    "provincia": "Livorno",
+    "regione": "Toscana"
+  },
+  {
+    "giorni": 337,
+    "nome": "Giovanni Leone",
+    "partito": "Democrazia Cristiana",
+    "governi": 2,
+    "provincia": "Napoli",
+    "regione": "Campania"
+  },
+  {
+    "giorni": 300,
+    "nome": "Enrico Letta",
+    "partito": "Partito Democratico",
+    "governi": 1,
+    "provincia": "Pisa",
+    "regione": "Toscana"
+  },
+  {
+    "giorni": 259,
+    "nome": "Giovanni Goria",
+    "partito": "Democrazia Cristiana",
+    "governi": 1,
+    "provincia": "Asti",
+    "regione": "Piemonte"
+  },
+  {
+    "giorni": 253,
+    "nome": "Arnaldo Forlani",
+    "partito": "Democrazia Cristiana",
+    "governi": 1,
+    "provincia": "Pesaro",
+    "regione": "Marche"
+  },
+  {
+    "giorni": 155,
+    "nome": "Giuseppe Pella",
+    "partito": "Democrazia Cristiana",
+    "governi": 1,
+    "provincia": "Biella",
+    "regione": "Piemonte"
+  },
+  {
+    "giorni": 123,
+    "nome": "Fernando Tambroni",
+    "partito": "Democrazia Cristiana",
+    "governi": 1,
+    "provincia": "Ascoli Piceno",
+    "regione": "Marche"
+  }
+]

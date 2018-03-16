@@ -1,0 +1,57 @@
+* {
+  display: border-box
+}
+
+@font-face {
+  font-family: 'sketch_fine_serifregular';
+  src: url('sketch_fine_serif-webfont.woff2') format('woff2'),
+       url('sketch_fine_serif-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-family: sketch_fine_serifregular, sans-serif
+}
+
+html, body {
+  height: 100%
+}
+
+h1 {
+  text-align: center;
+  margin: 2em 0 2em;
+  font-size: 200%
+}
+
+.graphs {
+  display: flex;
+  align-items: flex-start;
+  width: 80%;
+  margin: auto;
+}
+
+#table {
+  width: 80%;
+  margin: auto;
+  padding-bottom: 8em;
+}
+
+canvas {
+  width: 50%;
+  margin: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .graphs {
+    flex-direction: column
+  }
+  canvas {
+    width: 90%;
+  }
+}

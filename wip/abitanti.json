@@ -1,0 +1,82 @@
+[
+  {
+    "regione": "Lombardia",
+    "abitanti": 10023876
+  },
+  {
+    "regione": "Lazio",
+    "abitanti": 5897723
+  },
+  {
+    "regione": "Campania",
+    "abitanti": 5829936
+  },
+  {
+    "regione": "Sicilia",
+    "abitanti": 5039041
+  },
+  {
+    "regione": "Veneto",
+    "abitanti": 4903445
+  },
+  {
+    "regione": "Emilia Romagna",
+    "abitanti": 4446567
+  },
+  {
+    "regione": "Piemonte",
+    "abitanti": 4380502
+  },
+  {
+    "regione": "Puglia",
+    "abitanti": 4055213
+  },
+  {
+    "regione": "Toscana",
+    "abitanti": 3739759
+  },
+  {
+    "regione": "Calabria",
+    "abitanti": 1960101
+  },
+  {
+    "regione": "Sardegna",
+    "abitanti": 1650058
+  },
+  {
+    "regione": "Liguria",
+    "abitanti": 1560090
+  },
+  {
+    "regione": "Marche",
+    "abitanti": 1533620
+  },
+  {
+    "regione": "Abruzzo",
+    "abitanti": 1317681
+  },
+  {
+    "regione": "Friuli Venezia Giulia",
+    "abitanti": 1214754
+  },
+  {
+    "regione": "Trentino Alto Adige",
+    "abitanti": 1064317
+  },
+  {
+    "regione": "Umbria",
+    "abitanti": 886783
+  },
+  {
+    "regione": "Basilicata",
+    "abitanti": 568466
+  },
+  {
+    "regione": "Molise",
+    "abitanti": 309270
+  },
+  {
+    "regione": "Valle d'Aosta",
+    "abitanti": 126388
+  }
+]

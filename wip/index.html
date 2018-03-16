@@ -1,0 +1,331 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Governi</title>
+    <script src="//cdn.jsdelivr.net/gh/pshihn/workly/dist/workly.js"></script>
+    <script src="//cdn.rawgit.com/pshihn/rough/v2.0.0/dist/rough.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/color-js/1.0.1/color.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * {
+        display: border-box
+      }
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      
+      html, body {
+        height: 100%
+      }
+
+      body > div {
+        min-height: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      canvas {
+        width: 50%;
+        margin: auto;
+        display: block;
+      }
+      @media (max-width: 900px) {
+        body>div {
+          flex-direction: column
+        }
+        canvas {
+          width: 90%;
+        }
+      }
+
+    </style>
+  </head>
+<body>
+  <div>
+    <canvas id="years" width="800" height="800"></canvas>
+    <canvas id="number" width="800" height="800"></canvas>
+  </div>
+  <script>
+    (async () => {
+      const Color = net.brehaut.Color;
+      
+      const ranges = ['top', 'high', 'medium', 'low']
+      const rangeLabels = []
+      const topRange = ranges[0]
+      const colors = {
+        [topRange]: '#1C010C'
+        // [topRange]: Color(randomColor({
+        //   hue: 'red',
+        //   luminosity: 'dark'
+        // })).darkenByRatio(.8).toString()
+      }
+      //console.log(colors)
+      let light = 2.5
+      ranges.forEach((range, i) => {
+        if (range!==topRange) {
+          colors[range] = Color(colors[ranges[i-1]]).lightenByRatio(light).toString()
+          light = light - 1
+        }
+      })
+     
+      function bucketNumbers(data, bucketCount, min, max) {
+          var i = 0, l = data.length;
+          // If min and max are given, set them to the highest and lowest data values
+          if (typeof min === 'undefined') {
+              min = Infinity;
+              max = -Infinity;
+              for (i = 0; i < l; i++) {
+                  if (data[i][1] < min) min = data[i][1];
+                  if (data[i][1] > max) max = data[i][1];
+              }
+          }
+
+          var inc = (max - min) / bucketCount,
+              buckets = new Array(bucketCount);
+          // Initialize buckets
+          for (i = 0; i < bucketCount; i++) {
+              buckets[i] = [];
+          }
+          // Put the numbers into buckets
+          for (i = 0; i < l; i++) {
+              // Buckets include the lower bound but not the higher bound, except the top bucket
+              if (data[i][1] === max) buckets[bucketCount-1].push(data[i]);
+              else buckets[((data[i][1] - min) / inc) | 0].push(data[i]);
+          }
+          return buckets;
+      }
+
+      const transform = (data) => (
+        data.reduce((acc, {regione, giorni}) => {
+          regione = fixKey(regione)
+          acc[regione] = acc[regione] || 0;
+          acc[regione] = acc[regione] + giorni
+          return acc
+        }, {})
+      )
+      const fillColor = (name, data) => {
+        if (!data) return 'white';
+        return colors[data.level];
+      }
+      const fixKey = (str) => str.toUpperCase().split(' ').join('-')
+      const defineRanges = (data) => {
+        const values = Object.keys(data).map(key => [key, data[key]/1000]).sort((a,b) => a[1]-b[1])
+        const highest = Math.ceil(Math.max(...values.map(a => a[1])));
+        const buckets = bucketNumbers(values, 4, 0, highest);
+        
+        const rangedData =  buckets.reduce((acc, bucket, i) => {
+          rangeLabels.push([
+            Math.min(...bucket.map(item => item[1]))*1000,
+            Math.max(...bucket.map(item => item[1]))*1000
+          ])
+          return Object.assign(acc, bucket.reduce((cache, item) => {
+            cache[item[0]] = Object.assign({ value: item[1]*1000 }, {level: ranges[ranges.length-1 - i]});
+            return cache
+          }, {}));
+          return acc
+        }, {});
+        rangeLabels.reverse()
+
+        return rangedData
+      }
+
+      const response = await fetch('./governi.json')
+      const data = await response.json()
+      const canvas = document.getElementById('years');
+      const dataReady = defineRanges(transform(data))
+
+      const rc = rough.canvas(canvas,{
+        options: {
+          simplification: .1, roughness: 1
+        }
+      });
+      
+      var ctx = canvas.getContext("2d")
+      
+      const originalY = 100
+      let y = originalY+40, x = 450;
+      ctx.font="15px Arial";
+      ctx.fillText("Presidenze del consiglio per regione*",x,originalY + 20);
+      ctx.font="13px Arial";
+      ranges.forEach((range, i) => { 
+        rc.rectangle(x, y, 15, 15, { bowing: 0, fill: colors[range]})
+        const rangeLabel = rangeLabels[i];
+        if (rangeLabel[0]===rangeLabel[1]){
+          const years = Math.floor(rangeLabel[0]/365)
+          ctx.fillText(`più di ${years} anni`,x+20, y+10);
+        } else {
+          const yearsLow = Math.floor(rangeLabel[0]/365)
+          const yearsHigh = Math.floor(rangeLabel[1]/365)
+          ctx.fillText(`tra ${yearsLow} e ${yearsHigh} anni`,x+20, y+10);
+        }
+        
+        y = y+25
+      })
+      rc.rectangle(x, y, 15, 15, { bowing: 0, fill: 'white'})
+      ctx.fillText('Nessun presidente del consiglio', x + 20, y + 10);
+      ctx.fillText("*durata cumulativa",x, y + 50);
+      rc.rectangle(x-10, originalY, 270, y-originalY+60, {bowing: 0});
+
+      const width = 800, height = 960;
+      const path = d3.geo.path().projection(d3.geo.mercator().scale(2500).translate([-250, height*2.5]))
+     
+      d3.json("./it-reg.json", async (error, it) => {
+        if (error) throw error;
+        let topo = topojson.feature(it, it.objects.sub).features;
+        for (let feature of topo) {
+          const weightOption = {}
+          const weight = dataReady[fixKey(feature.properties.name)] && dataReady[fixKey(feature.properties.name)].level;
+          if (weight) {
+            weightOption.fillWeight = ranges.length - 2 - ranges.indexOf(weight)
+            weightOption.hachureAngle = weightOption.fillWeight * 35
+          }
+          await rc.path(path(feature), {
+            ...weightOption,
+            fill: fillColor(fixKey(feature.properties.name), dataReady[fixKey(feature.properties.name)]),
+          });
+        }
+      });
+    })();
+
+    (async () => {
+      const Color = net.brehaut.Color;
+      
+      const ranges = ['top', 'high', 'medium', 'low']
+      const rangeLabels = []
+      const topRange = ranges[0]
+      const colors = {
+        [topRange]: '#010C0E'
+        // [topRange]: Color(randomColor({
+        //   hue: 'blue',
+        //   luminosity: 'dark'
+        // })).darkenByRatio(.9).toString()
+      }
+      //console.log(colors)
+      let light = 2.5
+      ranges.forEach((range, i) => {
+        if (range!==topRange) {
+          colors[range] = Color(colors[ranges[i-1]]).lightenByRatio(light).toString()
+          light = light - 1
+        }
+      })
+     
+      function bucketNumbers(data, bucketCount, min, max) {
+          var i = 0, l = data.length;
+          // If min and max are given, set them to the highest and lowest data values
+          if (typeof min === 'undefined') {
+              min = Infinity;
+              max = -Infinity;
+              for (i = 0; i < l; i++) {
+                  if (data[i][1] < min) min = data[i][1];
+                  if (data[i][1] > max) max = data[i][1];
+              }
+          }
+
+          var inc = (max - min) / bucketCount,
+              buckets = new Array(bucketCount);
+          // Initialize buckets
+          for (i = 0; i < bucketCount; i++) {
+              buckets[i] = [];
+          }
+          // Put the numbers into buckets
+          for (i = 0; i < l; i++) {
+              // Buckets include the lower bound but not the higher bound, except the top bucket
+              if (data[i][1] === max) buckets[bucketCount-1].push(data[i]);
+              else buckets[((data[i][1] - min) / inc) | 0].push(data[i]);
+          }
+          return buckets;
+      }
+
+      const transform = (data) => (
+        data.reduce((acc, {regione}) => {
+          regione = fixKey(regione)
+          acc[regione] = acc[regione] || 0;
+          acc[regione] = acc[regione] + 1000
+          return acc
+        }, {})
+      )
+      const fillColor = (name, data) => {
+        if (!data) return 'white';
+        return colors[data.level];
+      }
+      const fixKey = (str) => str.toUpperCase().split(' ').join('-')
+      const defineRanges = (data) => {
+        const values = Object.keys(data).map(key => [key, data[key]/1000]).sort((a,b) => a[1]-b[1])
+        const highest = Math.ceil(Math.max(...values.map(a => a[1])));
+        const buckets = bucketNumbers(values, 4, 0, highest);
+        
+        const rangedData =  buckets.reduce((acc, bucket, i) => {
+          rangeLabels.push([
+            Math.min(...bucket.map(item => item[1]))*1000,
+            Math.max(...bucket.map(item => item[1]))*1000
+          ])
+          return Object.assign(acc, bucket.reduce((cache, item) => {
+            cache[item[0]] = Object.assign({ value: item[1]*1000 }, {level: ranges[ranges.length-1 - i]});
+            return cache
+          }, {}));
+          return acc
+        }, {});
+        rangeLabels.reverse()
+
+        return rangedData
+      }
+
+      const response = await fetch('./governi.json')
+      const data = await response.json()
+      const canvas = document.getElementById('number');
+      const dataReady = defineRanges(transform(data))
+
+      const rc = rough.canvas(canvas,{
+        options: {
+          simplification: .1, roughness: 1
+        }
+      });
+      
+      var ctx = canvas.getContext("2d")
+      
+      const originalY = 100
+      let y = originalY+40, x = 450;
+      ctx.font="15px Arial";
+      ctx.fillText("Presidenze del consiglio per regione",x,originalY + 20);
+      ctx.font="13px Arial";
+      ranges.forEach((range, i) => { 
+        rc.rectangle(x, y, 15, 15, { bowing: 0, fill: colors[range]})
+        const rangeLabel = rangeLabels[i];
+        if (rangeLabel[0]===rangeLabel[1]){
+          const pdc = rangeLabel[0]/1000
+          ctx.fillText(`${pdc} presidenti del consiglio`,x+20, y+10);
+        }
+        
+        y = y+25
+      })
+      rc.rectangle(x, y, 15, 15, { bowing: 0, fill: 'white'})
+      ctx.fillText('Nessun presidente del consiglio', x + 20, y + 10);
+      rc.rectangle(x-10, originalY, 270, y-originalY+30, {bowing: 0});
+
+      const width = 800, height = 960;
+      const path = d3.geo.path().projection(d3.geo.mercator().scale(2500).translate([-250, height*2.5]))
+     
+      d3.json("./it-reg.json", async (error, it) => {
+        if (error) throw error;
+        let topo = topojson.feature(it, it.objects.sub).features;
+        for (let feature of topo) {
+          const weightOption = {}
+          const weight = dataReady[fixKey(feature.properties.name)] && dataReady[fixKey(feature.properties.name)].level;
+          if (weight) {
+            weightOption.fillWeight = ranges.length - 1.8 - ranges.indexOf(weight)
+            weightOption.hachureAngle = weightOption.fillWeight * 35
+          }
+          await rc.path(path(feature), {
+            ...weightOption,
+            fill: fillColor(fixKey(feature.properties.name), dataReady[fixKey(feature.properties.name)]),
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
