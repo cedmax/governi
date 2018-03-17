@@ -28,7 +28,7 @@ export default ({data}) => {
               {
                 Header: 'Mandati',
                 accessor: 'governi',
-                maxWidth: 80
+                maxWidth: 100
               },
               {
                 Header: 'Partiti',
