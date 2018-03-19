@@ -2,6 +2,17 @@ import React from 'react'
 import ReactTable from 'react-table'
 import "react-table/react-table.css";
 
+const jarh = (x) => {
+	const y = 365;
+	const y2 = 31;
+	const remainder = x % y;
+	const casio = remainder % y2;
+	const year = (x - remainder) / y;
+	const month = (remainder - casio) / y2;
+
+  return `${year}y${month?` ${month}m`:''}`;
+}
+
 export default ({data}) => {
   return (
     <div id="table">
@@ -18,7 +29,7 @@ export default ({data}) => {
               {
                 Header: "Giorni in carica",
                 id: 'durata',
-                accessor: d => `${d.giorni} (~${Math.round(d.giorni / 365)} anni)`,
+                accessor: d => `${d.giorni} - ${jarh(d.giorni)}`,
                 sortMethod: (a, b) => {
                   return a.giorni-b.giorni
                 },
