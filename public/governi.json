@@ -104,6 +104,14 @@
     "regione": "Lazio"
   },
   {
+    "giorni": 536,
+    "nome": "Paolo Gentiloni",
+    "partito": "Partito Democratico",
+    "governi": 1,
+    "provincia": "Roma",
+    "regione": "Lazio"
+  },
+  {
     "giorni": 528,
     "nome": "Mario Monti",
     "partito": "Indipendente / Rinnovamento Italiano",
@@ -142,14 +150,6 @@
     "governi": 1,
     "provincia": "Avellino",
     "regione": "Campania"
-  },
-  {
-    "giorni": 457,
-    "nome": "Paolo Gentiloni",
-    "partito": "Partito Democratico",
-    "governi": 1,
-    "provincia": "Roma",
-    "regione": "Lazio"
   },
   {
     "giorni": 440,
@@ -222,5 +222,13 @@
     "governi": 1,
     "provincia": "Ascoli Piceno",
     "regione": "Marche"
+  },
+  {
+    "dal": "2018/06/01",
+    "nome": "Giuseppe Conte",
+    "partito": "Movimento 5 Stelle",
+    "governi": 1,
+    "provincia": "Foggia",
+    "regione": "Puglia"
   }
 ]

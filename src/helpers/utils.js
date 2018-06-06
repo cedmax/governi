@@ -68,3 +68,8 @@ export const transform = (data, formatter) =>
     acc[regione] = acc[regione] + formatter(item)
     return acc
   }, {})
+
+export const fixCurrentGovernment = (govs) => govs.map(({dal, ...gov}) => (!dal) ? gov : ({
+  ...gov,
+  giorni: parseInt((new Date() - new Date(dal)) / (1000 * 60 * 60 * 24), 10)
+})) 

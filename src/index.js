@@ -1,6 +1,7 @@
 import './index.css'
 import React from 'react';
 import { render } from 'react-dom';
+import { fixCurrentGovernment } from './helpers/utils'
 import App from './App'
 
 (async () => {
@@ -15,7 +16,7 @@ import App from './App'
   )
 
   render(
-    <App governments={governments} geo={geo} />,
+    <App governments={fixCurrentGovernment(governments)} geo={geo} />,
     document.getElementById('root')
   )
 })()

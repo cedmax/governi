@@ -55,6 +55,7 @@ export default ({data}) => {
             ]
           }
         ]}
+        pageSize={data.length}
         showPagination={false}
         className="-striped"
       />
