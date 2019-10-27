@@ -1,4 +1,4 @@
-import { y } from "./constants";
+import { y } from './constants'
 
 function bucketNumbers (data, bucketCount, max) {
   const buckets = new Array(bucketCount).fill().map(() => [])
@@ -73,4 +73,4 @@ export const fixCurrentGovernment = (govs) => govs.map(({dal, ...gov}) => (!dal)
   ...gov,
   current: true,
   giorni: parseInt((new Date() - new Date(dal)) / (1000 * 60 * 60 * 24), 10)
-})) 
+}))

@@ -12,7 +12,7 @@ export default topColor => {
       colors[range] = Color(colors[ranges[i - 1]])
         .lightenByRatio(light)
         .toString()
-      light = light - .9
+      light = light - 0.9
     }
   })
 

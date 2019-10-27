@@ -1,3 +1,16 @@
 {
-  "extends": "standard"
+  "plugins" :["react"],
+  "extends": [
+    "plugin:react/recommended",
+    "standard"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "globals": { "fetch": false },
+  "rules": {
+    "react/prop-types": 0
+  }
 }

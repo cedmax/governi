@@ -1,8 +1,8 @@
-import './index.css'
-import React from 'react';
-import { render } from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
 import { fixCurrentGovernment } from './helpers/utils'
 import App from './App'
+import './index.css'
 
 (async () => {
   const govResponse = fetch('./governi.json')
@@ -11,13 +11,13 @@ import App from './App'
   const data = [await govResponse, await geoResponse]
   const [governments, geo] = await Promise.all(
     data.map(async response => {
-      return await response.json()
+      return response.json()
     })
   )
 
   const sortedGov = fixCurrentGovernment(governments).sort(
     (a, b) => b.giorni - a.giorni
-  );
+  )
 
   render(
     <App governments={sortedGov} geo={geo} />,

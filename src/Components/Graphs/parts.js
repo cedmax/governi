@@ -12,15 +12,15 @@ export const legend = (
   { labels, title, none, note, preciseFormatter, rangeFormatter }
 ) => {
   const ctx = canvas.getContext('2d')
-  let y = originalY + 40;
+  let y = originalY + 40
   ctx.font = '15px Arial'
   ctx.fillText(title, x, originalY + 20)
   ctx.font = '13px Arial'
   ranges.forEach((range, i) => {
-    const weight = weightCalc(ranges, range);
-    rc.rectangle(x, y, 15, 15, { 
-      bowing: 0, 
-      fill: colors[range], 
+    const weight = weightCalc(ranges, range)
+    rc.rectangle(x, y, 15, 15, {
+      bowing: 0,
+      fill: colors[range],
       fillWeight: weight,
       hachureAngle: weight * angle
     })

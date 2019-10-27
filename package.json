@@ -27,7 +27,14 @@
     "postinstall": "cp -r node_modules/roughjs src && bannerize src/roughjs/src/*.js --banner=src/lintignore.ejs",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
+    "test": "eslint src/**/*.js",
     "eject": "react-app-rewired eject"
+  },
+  "devDependencies": {
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-standard": "^4.0.1"
   }
 }
