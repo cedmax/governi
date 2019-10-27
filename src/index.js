@@ -15,8 +15,12 @@ import App from './App'
     })
   )
 
+  const sortedGov = fixCurrentGovernment(governments).sort(
+    (a, b) => b.giorni - a.giorni
+  );
+
   render(
-    <App governments={fixCurrentGovernment(governments)} geo={geo} />,
+    <App governments={sortedGov} geo={geo} />,
     document.getElementById('root')
   )
 })()

@@ -3,12 +3,12 @@ import ReactTable from 'react-table'
 import "react-table/react-table.css";
 
 const jarh = (x) => {
-	const y = 365;
-	const y2 = 31;
-	const remainder = x % y;
-	const casio = remainder % y2;
-	const year = (x - remainder) / y;
-	const month = (remainder - casio) / y2;
+  const y = 365;
+  const y2 = 31;
+  const remainder = x % y;
+  const casio = remainder % y2;
+  const year = (x - remainder) / y;
+  const month = (remainder - casio) / y2;
 
   return `${year}y${month?` ${month}m`:''}`;
 }
@@ -18,16 +18,18 @@ export default ({data}) => {
     <div id="table">
       <ReactTable
         data={data}
+        defaultSorted={[{id:'durata'}]}
         columns={[
           {
             columns: [
               {
                 Header: 'Primo Ministro',
-                accessor: "nome",
+                id: 'nome',
+                accessor: n => `${n.current ? `➤ ` : ''}${n.nome}`,
                 minWidth: 150
               },
               {
-                Header: "Giorni in carica",
+                Header: 'Giorni in carica',
                 id: 'durata',
                 accessor: d => `${d.giorni} - ${jarh(d.giorni)}`,
                 sortMethod: (a, b) => {
@@ -44,7 +46,7 @@ export default ({data}) => {
               {
                 Header: 'Partiti',
                 accessor: 'partito',
-                minWidth: 150         
+                minWidth: 150
               },
               {
                 Header: 'Regione',
