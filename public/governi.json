@@ -224,11 +224,19 @@
     "regione": "Marche"
   },
   {
-    "dal": "2018/06/01",
+    "giorni": 988,
     "nome": "Giuseppe Conte",
     "partito": "Indipendente / Movimento 5 Stelle",
     "governi": 2,
     "provincia": "Foggia",
     "regione": "Puglia"
+  },
+  {
+    "dal": "2021/02/13",
+    "nome": "Mario Draghi",
+    "partito": "Indipendente",
+    "governi": 1,
+    "provincia": "Roma",
+    "regione": "Lazio"
   }
 ]
